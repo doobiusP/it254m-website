@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Stock Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="{{ url_for('app_routes.home') }}">Home</a></li>
+            <li><a href="{{ url_for('app_routes.index') }}">Prediction Page</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Stock Market Analysis</h1>
+        
+        <h2>Some Popular Stock Visualizations</h2>
+
+        <div class="stock-data">
+            <div class="stock">
+                <h3>Apple (AAPL)</h3>
+                <a href="javascript:void(0);" onclick="openModal('aapl_chart.png')">
+                    <img src="{{ url_for('static', filename='aapl_chart.png') }}" alt="AAPL Stock Chart" class="stock-chart">
+                </a>
+            </div>
+            <div class="stock">
+                <h3>Tesla (TSLA)</h3>
+                <a href="javascript:void(0);" onclick="openModal('tsla_chart.png')">
+                    <img src="{{ url_for('static', filename='tsla_chart.png') }}" alt="TSLA Stock Chart" class="stock-chart">
+                </a>
+            </div>
+            <div class="stock">
+                <h3>Microsoft (MSFT)</h3>
+                <a href="javascript:void(0);" onclick="openModal('msft_chart.png')">
+                    <img src="{{ url_for('static', filename='msft_chart.png') }}" alt="MSFT Stock Chart" class="stock-chart">
+                </a>
+            </div>
+        </div>
+        <h2>For Personalized Predictions</h2>
+        <div class="button-container">
+            <a href="{{ url_for('app_routes.index') }}" class="button">Go to Prediction Page</a>
+        </div>
+        
+        <h2>About Our Website</h2>
+        <p class="about-text">This website is designed to help users visualize and analyze stock trends of multiple companies. By providing detailed stock charts and predictions, our goal is to assist investors and enthusiasts in making more informed decisions. Users can explore historical data and trends for stocks like Apple, Tesla, and Microsoft, and utilize our predictive tools to anticipate future stock movements. Whether you're an experienced investor or just getting started, this website offers valuable insights to help guide your financial decisions.</p>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="modal-content" src="" alt="Enlarged Stock Chart">
+        <div id="modalCaption"></div>
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            var modal = document.getElementById("imageModal");
+            var modalImage = document.getElementById("modalImage");
+            var caption = document.getElementById("modalCaption");
+            
+            modal.style.display = "block";
+            modalImage.src = "{{ url_for('static', filename='') }}" + imageSrc;
+            caption.innerHTML = imageSrc.split("_")[0].toUpperCase() + " Stock Chart";  
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-# Use non-interactive backend
 matplotlib.use("Agg")
 
 def plot_predictions(df : pd.DataFrame, predictions_rescaled : np.ndarray) -> str:
@@ -36,5 +35,6 @@ def plot_backtesting(df : pd.DataFrame, predictions_rescaled : np.ndarray) -> st
     
     plot_path = 'static/backtesting_plot.png'
     plt.savefig(plot_path, format='png')
-    plt.close()  # Close the figure to free memory
+    plt.close()  
     return plot_path
+

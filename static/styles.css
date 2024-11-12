@@ -1,22 +1,22 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f1e3; /* Soft pastel pink background */
     padding: 20px;
-    
 }
 
 .container {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #4a4e69; /* Soft pastel purple */
+    font-size: 28px;
 }
 
 form {
@@ -26,33 +26,41 @@ form {
 label {
     display: block;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    color: #616161; /* Neutral gray for text */
 }
 
-input[type="text"] {
+input[type="text"], input[type="date"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #d4a5a5; /* Pastel pink border */
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="date"]:focus {
+    border-color: #84a59d; /* Soft pastel teal on focus */
+    outline: none;
 }
 
 button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px 20px;
-    font-size: 16px;
+    background-color: #84a59d; /* Pastel teal */
+    color: #ffffff;
+    padding: 14px 22px;
+    font-size: 18px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #9ebeb3; /* Lighter pastel teal */
 }
 
 button:active {
-    transform: translateY(1px);
+    transform: translateY(2px);
 }

@@ -218,3 +218,18 @@ button:active {
 .navbar a:hover {
     background-color: #575757;
 }
+
+.modal {
+    display: none; /* Hide by default */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal.hide {
+    opacity: 0;
+}

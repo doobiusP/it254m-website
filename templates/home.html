@@ -15,30 +15,31 @@
     </nav>
 
     <div class="container">
-        <h1>Stock Market Analysis</h1>
+        <h1>StockSight - Stock Price Prediction App</h1>
         
         <h2>Some Popular Stock Visualizations</h2>
 
         <div class="stock-data">
             <div class="stock">
                 <h3>Apple (AAPL)</h3>
-                <a href="javascript:void(0);" onclick="openModal('aapl_chart.png')">
+                <a href="javascript:void(0);" onclick="openModal('aapl_chart.png', 'Apple (AAPL) Stock Chart')">
                     <img src="{{ url_for('static', filename='aapl_chart.png') }}" alt="AAPL Stock Chart" class="stock-chart">
                 </a>
             </div>
             <div class="stock">
                 <h3>Tesla (TSLA)</h3>
-                <a href="javascript:void(0);" onclick="openModal('tsla_chart.png')">
+                <a href="javascript:void(0);" onclick="openModal('tsla_chart.png', 'Tesla (TSLA) Stock Chart')">
                     <img src="{{ url_for('static', filename='tsla_chart.png') }}" alt="TSLA Stock Chart" class="stock-chart">
                 </a>
             </div>
             <div class="stock">
                 <h3>Microsoft (MSFT)</h3>
-                <a href="javascript:void(0);" onclick="openModal('msft_chart.png')">
+                <a href="javascript:void(0);" onclick="openModal('msft_chart.png', 'Microsoft (MSFT) Stock Chart')">
                     <img src="{{ url_for('static', filename='msft_chart.png') }}" alt="MSFT Stock Chart" class="stock-chart">
                 </a>
             </div>
         </div>
+
         <h2>For Personalized Predictions</h2>
         <div class="button-container">
             <a href="{{ url_for('app_routes.index') }}" class="button">Go to Prediction Page</a>
@@ -55,18 +56,31 @@
     </div>
 
     <script>
-        function openModal(imageSrc) {
-            var modal = document.getElementById("imageModal");
-            var modalImage = document.getElementById("modalImage");
-            var caption = document.getElementById("modalCaption");
-            
-            modal.style.display = "block";
+        function openModal(imageSrc, captionText) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+            const caption = document.getElementById("modalCaption");
+
             modalImage.src = "{{ url_for('static', filename='') }}" + imageSrc;
-            caption.innerHTML = imageSrc.split("_")[0].toUpperCase() + " Stock Chart";  
+            caption.innerText = captionText;
+            
+            modal.classList.add("show"); // Adds class for smooth transition in CSS
         }
 
         function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
+            const modal = document.getElementById("imageModal");
+            modal.classList.remove("show"); // Removes class for smooth transition in CSS
+            setTimeout(() => {
+                document.getElementById("modalImage").src = ""; // Clear image source after closing
+            }, 300); // Wait for CSS transition to complete
+        }
+
+        // Close modal on clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target === modal) {
+                closeModal();
+            }
         }
     </script>
 </body>
